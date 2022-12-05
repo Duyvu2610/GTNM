@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.swiper-slide-active img {
+    transition: all .5s linear;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.swiper-slide-active [data-id] {
+    transition: all .6s linear;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@layer components {
+    .success {
+        animation: animate .7s ease-in-out forwards;
+        /* transform: translateX(-310px); */
+    }
+
+    @keyframes animate {
+        80% {
+            transform: translateX(-520px);
+        }
+
+        100% {
+            transform: translateX(-510px);
+        }
+    }
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.08);
+
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
