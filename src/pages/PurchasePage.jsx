@@ -47,8 +47,8 @@ function PurchasePage() {
                         </span>
                     </div>
                     <div className="">
-                        <p className='font-semibold md:py-2'>Duyvu</p>
-                        <p className='md:py-2'>akjdsh</p>
+                        <p className='font-semibold md:py-2'>{JSON.parse(localStorage.getItem("currentUser")).account}</p>
+                        <p className='md:py-2'>Khách hàng</p>
                     </div>
                 </div>
             </div>
