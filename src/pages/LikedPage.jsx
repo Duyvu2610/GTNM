@@ -7,7 +7,7 @@ function LikedPage() {
     const list = JSON.parse(localStorage.getItem("likedList")) || []
 
     return (
-        <div className='p-4 min-h-screen'>
+        <div className='p-4 min-h-screen lg:w-[1000px] lg:mx-auto'>
             <p>Các sản phẩm đã thích</p>
             <div className="grid grid-cols-1 md:col-span-2 gap-4 ">
                 {
