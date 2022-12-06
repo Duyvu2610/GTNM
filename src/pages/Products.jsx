@@ -50,7 +50,7 @@ function Products() {
   }
   return (
     <div className="flex max-w-7xl mx-auto mt-8 px-7">
-      <div className="w-0 fixed top-header-h left-0 z-[999] bg-[#ccc]  max-h-full overflow-auto transition-all duration-500  lg:w-[200px] lg:relative lg:bg-white lg:mr-6" ref={filterList}>
+      <div className="w-0 fixed top-header-h left-0 z-[9] bg-[#ccc]  max-h-full overflow-auto transition-all duration-500  lg:w-[200px] lg:relative lg:bg-white lg:mr-6" ref={filterList}>
         <AiFillCloseCircle className="text-5xl ml-auto mt-4 lg:hidden" onClick={handleShowFilter} />
         {/* Select input  (begin) */}
 
