@@ -44,6 +44,7 @@ const Form = forwardRef(({ }, ref) => {
             localStorage.setItem("currentUser", JSON.stringify(user))
             setTimeout(() => {
                 handleCloseModal()
+                window.location.reload()
             }, 2100)
         }
         else {

@@ -52,7 +52,7 @@ function Bill({ item, onClick, isLike }) {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
 
-                    <span><Button className="" onClick={handleRemove}>Xóa</Button></span>
+                    <span><Button className="bg-red-500 border-white font-medium" onClick={handleRemove}>Xóa</Button></span>
                     <span>
                         {isLike ? <Button className="" onClick={handleBuyNow}>Mua Ngay</Button> :
                             <Button className="" onClick={onClick}>Thanh toán</Button>}

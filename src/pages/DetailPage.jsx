@@ -24,6 +24,7 @@ function DetailPage() {
   const navigate = useNavigate();
   let comment = JSON.parse(localStorage.getItem(`product${state.id}`)) ?? [];
   let purchaseList = JSON.parse(localStorage.getItem(`purchaseList`)) ?? [];
+  const user = JSON.parse(localStorage.getItem("currentUser"))?.account || ""
   const [render, setRender] = useState(false);
 
   const successRef = useRef()
@@ -146,6 +147,27 @@ function DetailPage() {
                 type={"text"}
                 placeholder="Bạn nghĩ gì về sản phẩm này ?"
                 className={cx("input")}
+                onKeyDown={(e) => {
+                  const inputField = document.querySelector(`.${cx("input")}`);
+                  const pushWrap = document.querySelector(
+                    `.${cx("push-content-btn")}`
+                  );
+                  const push = document.querySelector(`.${cx("push")}`);
+                  push.classList.add(`${cx("active")}`);
+                  if (e.code === "Enter") {
+                    setRender((prev) => !prev);
+                    const currentCmt = {
+                      cmt: inputField.value,
+                      user: user
+                    }
+                    comment = [currentCmt, ...comment];
+                    localStorage.setItem(
+                      `product${state.id}`,
+                      JSON.stringify(comment)
+                    );
+                    inputField.value = "";
+                  }
+                }}
                 onInput={(e) => {
                   const push = document.querySelector(`.${cx("push")}`);
                   if (e.target.value.trim()) {
@@ -180,20 +202,30 @@ function DetailPage() {
               </button>
               <button
                 className={cx("push")}
+
                 onClick={(e) => {
                   const inputField = document.querySelector(`.${cx("input")}`);
                   const pushWrap = document.querySelector(
                     `.${cx("push-content-btn")}`
                   );
-                  if (inputField.value.trim()) {
+                  const push = document.querySelector(`.${cx("push")}`);
+                  push.classList.remove(`${cx("active")}`);
+                  if (inputField.value.trim() && user) {
                     setRender((prev) => !prev);
-                    comment = [inputField.value, ...comment];
+                    const currentCmt = {
+                      cmt: inputField.value,
+                      user: user
+                    }
+                    comment = [currentCmt, ...comment];
                     localStorage.setItem(
                       `product${state.id}`,
                       JSON.stringify(comment)
                     );
                     inputField.value = "";
                     pushWrap.style.display = "none";
+                  } else {
+                    console.log(user);
+                    showSweetAlert(loginRef)
                   }
                 }}
               >
@@ -202,16 +234,19 @@ function DetailPage() {
             </div>
           </div>
           <div className={cx("comment-content-wrapper")}>
-            {comment.map((c, index) => (
-              <div className={cx("comment-content")} key={index}>
-                <img
-                  src="https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg"
-                  className={cx("user-avatar")}
-                  alt=""
-                ></img>
-                <p className={cx("content")}>
-                  <span>{c}</span>
-                </p>
+            {comment?.map((c, index) => (
+              <div className="" key={index}>
+                <span className="m-2 font-medium text-lg">{c.user}</span>
+                <div className={cx("comment-content")} >
+                  <img
+                    src="https://fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg"
+                    className={cx("user-avatar")}
+                    alt=""
+                  ></img>
+                  <p className={cx("content")}>
+                    <span>{c.cmt}</span>
+                  </p>
+                </div>
               </div>
             ))}
           </div>
