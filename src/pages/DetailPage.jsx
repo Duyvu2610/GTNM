@@ -88,34 +88,33 @@ function DetailPage() {
           &ensp;
           {state.id}
         </div>
-        <img src={state.img} alt="" className="w-60 mx-auto" />
-        <div className="flex w-full justify-around py-4">
-          <div className="w-20 h-20 border"></div>
-          <div className="w-20 h-20 border"></div>
-          <div className="w-20 h-20 border"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <img src={state.img} alt="" className="w-60 mx-auto" />
+
+          <div className=""><p className="font-bold text-3xl py-4">{state.id}</p>
+            <p className="py-2">
+              <span className="mr-2 text-lg text-gray-500 font-semibold">
+                Brand:
+              </span>
+              {state.brand}
+            </p>
+            <p className="flex items-center ">
+              <span>Rated:</span>
+              {indents}
+            </p>
+            <p className="py-2">{state.desc}</p>
+            <p className="py-2 flex items-center text-red-500 text-xl font-bold">
+              {state.discount}{" "}
+              <BsCurrencyDollar />
+            </p>
+            <div className="flex items-center text-3xl py-4">
+              <AiFillMinusCircle onClick={handleDecrease} />
+              <span className="mx-4">{amount}</span>
+              <AiFillPlusCircle onClick={handleIncrease} />
+            </div>
+            <Button onClick={handleBuyProduct}>Thêm vào giỏ hàng</Button></div>
         </div>
-        <p className="font-bold text-3xl py-4">{state.id}</p>
-        <p className="py-2">
-          <span className="mr-2 text-lg text-gray-500 font-semibold">
-            Brand:
-          </span>
-          {state.brand}
-        </p>
-        <p className="flex items-center ">
-          <span>Rated:</span>
-          {indents}
-        </p>
-        <p>{state.desc}</p>
-        <p className="py-2 flex items-center text-red-500 text-xl font-bold">
-          <BsCurrencyDollar />
-          {state.discount}{" "}
-        </p>
-        <div className="flex items-center text-3xl py-4">
-          <AiFillMinusCircle onClick={handleDecrease} />
-          <span className="mx-4">{amount}</span>
-          <AiFillPlusCircle onClick={handleIncrease} />
-        </div>
-        <Button onClick={handleBuyProduct}>Thêm vào giỏ hàng</Button>
+
         <p className="mt-10 text-center text-xl font-bold">Các sản phẩm khác</p>
         <div className="grid grid-cols-1 mt-4 gap-8 md:grid-cols-2 mb-4 lg:grid-cols-3">
           {productStore.map((e) => (

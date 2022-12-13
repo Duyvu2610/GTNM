@@ -85,7 +85,7 @@ function Product({ item, onClick = () => { } }) {
                 <p className=' text-center font-semibold text-lg'>{item.id}</p>
                 <div className="flex justify-center">
                     <del className='mr-2 text-sm pt-2 '>{item.price}</del>
-                    <p className='text-red-500 text-xl font-semibold '>{item.discount}</p>
+                    <p className='text-red-500 text-xl font-semibold '>{item.discount}$</p>
                 </div>
             </div>
             {/* aler buy succes */}
