@@ -55,7 +55,7 @@ function Header() {
 
               placement="bottom-start"
               render={() => (
-                <ul className="bg-gray-200  w-[140px] rounded-lg overflow-hidden md:w-[400px] lg:w-[800px]">
+                <ul className="bg-gray-200  w-[140px] rounded-lg overflow-hidden md:w-[400px] lg:w-[600px]">
                   {suggestProduct.map((sp, index) => (
                     <li
                       key={index}
