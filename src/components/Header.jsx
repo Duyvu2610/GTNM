@@ -159,6 +159,7 @@ function Header() {
                     <span className="ml-2">Sản phẩm</span>
                   </li>
                   <li className="flex items-center cursor-pointer hover:bg-gray-300 transition duration-300 py-2 px-4 lg:hidden" onClick={() => {
+                    
                     setShowMenuMobile(false)
                     navigate('/purchase')
                   }}>
